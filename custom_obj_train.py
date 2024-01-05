@@ -22,15 +22,23 @@ class CocoTrainer(DefaultTrainer):
             os.makedirs("coco_eval", exist_ok=True)
             output_folder = "coco_eval"
         return COCOEvaluator(dataset_name, cfg, False, output_folder)
+
+# Model list 
+# "COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x" 
+# "COCO-InstanceSegmentation/mask_rcnn_R_101_C4_3x"
+# "COCO-InstanceSegmentation/mask_rcnn_R_101_DC5_3x"
+# "COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x"
+# "COCO-InstanceSegmentation/mask_rcnn_X_101_32x8d_FPN_3x"
+
 def train():
     with wandb.init() as run:
         config = wandb.config
         cfg = get_cfg()
-        cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
+        cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_DC5_3x.yaml"))
         cfg.DATASETS.TRAIN = ("my_dataset_train",)
         cfg.DATASETS.TEST = ("my_dataset_val",)
         cfg.DATALOADER.NUM_WORKERS = 4
-        cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")
+        cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-InstanceSegmentation/mask_rcnn_R_50_DC5_3x.yaml")
         cfg.SOLVER.IMS_PER_BATCH = config.batch_size
         cfg.SOLVER.BASE_LR = config.learning_rate
         cfg.SOLVER.WARMUP_ITERS = 1000
@@ -68,15 +76,15 @@ sweep_config = {
             'max': 0.01
         },
         'batch_size': {
-            'values': [2, 4, 8, 16]
+            'values': [2, 4, 8]
         },  
         'max_iter': {
-            'values': [3500, 4000, 4500]
+            'values': [3000, 4000, 5000]
         }
     }
 }
 
 wandb.login()  
-sweep_id = wandb.sweep(sweep_config, project="iseg_sweep_03")
+sweep_id = wandb.sweep(sweep_config, project="iseg_sweep_06_dc5")
 register_datasets()
 wandb.agent(sweep_id, function=train)
