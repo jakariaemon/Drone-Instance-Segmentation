@@ -28,7 +28,6 @@ class CocoTrainer(DefaultTrainer):
 # "COCO-InstanceSegmentation/mask_rcnn_R_101_C4_3x"
 # "COCO-InstanceSegmentation/mask_rcnn_R_101_DC5_3x"
 # "COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x"
-# "COCO-InstanceSegmentation/mask_rcnn_X_101_32x8d_FPN_3x"
 
 def train():
     with wandb.init() as run:
