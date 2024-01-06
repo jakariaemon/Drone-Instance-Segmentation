@@ -25,7 +25,7 @@ class CocoTrainer(DefaultTrainer):
 
 # Model list 
 # "COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x" 
-# "COCO-InstanceSegmentation/mask_rcnn_R_101_C4_3x"
+# "COCO-InstanceSegmentation/mask_rcnn_R_50_C4_1x"
 # "COCO-InstanceSegmentation/mask_rcnn_R_101_DC5_3x"
 # "COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x"
 
