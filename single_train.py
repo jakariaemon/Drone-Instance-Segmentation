@@ -31,8 +31,8 @@ def train():
     cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_1x.yaml")
     cfg.SOLVER.IMS_PER_BATCH = 4
     cfg.SOLVER.BASE_LR = 0.00306982
-    cfg.SOLVER.MAX_ITER = 60000
-    cfg.SOLVER.STEPS = (30000, 45500)
+    cfg.SOLVER.MAX_ITER = 10000
+    cfg.SOLVER.STEPS = (5000, 7500)
     cfg.SOLVER.GAMMA = 0.05
     cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 64
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = 2
