@@ -4,7 +4,20 @@
 
 # Installation 
 
-Will Update soon. 
+## Required Libraries (Version)  
+```
+detectron2 == 0.6
+torch 2.0.1+cu118
+NVCC 11.5
+``` 
+Install detectron2 (Please use WSL) 
+```
+python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
+```
+Install torch 
+```
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+``` 
 
 ## Anti-UGV-IS Dataset 
 
