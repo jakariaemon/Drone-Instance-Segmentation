@@ -26,4 +26,9 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 
 ## Training 
 
+- Download the annotated dataset and create split using "04_split_dataset.py".
+- To run hyperparameter optimization run "05_hyperparameter_optimization.py". Note that some backbone may took 11GB+ vram. So its better to use google colab (Tesla T4). 
+- After that run "06_single_train.py". The model will be saved in the "Output" folder. That can be use for inferencing. 
+
+
 ## Inferencing 
